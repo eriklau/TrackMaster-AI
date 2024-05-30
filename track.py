@@ -18,6 +18,8 @@ class Track(Window):
         self.cars_batch = Batch()
         self.track_image_sprite = Sprite(image.load(track_image_path), batch=self.background_batch)
         self.car_images = [image.load(car) for car in car_image_paths]
+        self.keyboard = key.KeyStateHandler()
+        self.push_handlers(self.keyboard)
 
     
     def simulate_generation(self):
