@@ -26,7 +26,7 @@ class Track(Window):
         self.hud = Hud(simulation_round, self.overlay_batch)
         self.car_sprites = []
         for network in networks:
-            self.car_sprites.append(Car(network, random.choice(self.car_images), self.cars_batch))
+            self.car_sprites.append(Car(network, self.track, random.choice(self.car_images), self.cars_batch))
         self.population_total = len(self.car_sprites)
         self.population_alive = self.population_total
         last_time = time.perf_counter()

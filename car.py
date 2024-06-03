@@ -3,12 +3,13 @@ import math
 
 class Car:
     max_speed = 6.0
-    def __init__(self, network, image, batch) -> None:
+    def __init__(self, network, track, image, batch) -> None:
         self.network = network
+        self.track = track
         image.anchor_x = 25
         image.anchor_y = 25
         self.body = Sprite(image, batch=batch)
-        self.body.x, self.body.y = 480, 260
+        self.body.x, self.body.y = track.checkpoints[0]
         self.speed = 0.0
         self.rotation = 0.0
         self.is_running = True
