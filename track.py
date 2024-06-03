@@ -35,7 +35,8 @@ class Track(Window):
                 self.draw()
 
     def update(self, delta_time):
-        pass
+        for car_sprite in self.car_sprites:
+            car_sprite.update(delta_time, self.keyboard)
 
     def draw(self):
         self.clear()
