@@ -3,10 +3,13 @@ from pyglet.window import key
 from pyglet import image
 from pyglet.graphics import Batch
 from pyglet.sprite import Sprite
+from pyglet.shapes import Circle
+from pyglet.text import Label
 from car import Car
 import time
 import random
 from hud import Hud
+import math
 
 class Track(Window):
     frame_duration = 1/60
@@ -21,6 +24,10 @@ class Track(Window):
         self.overlay_batch = Batch()
         self.track_image_sprite = Sprite(track.track_image, batch=self.background_batch)
         self.car_images = [image.load(car) for car in car_image_paths]
+        self.checkpoint_sprites = []
+        for i, checkpoint in enumerate(track.checkpoints):
+            self.checkpoint_sprites.append((Circle(checkpoint[0], checkpoint[1], 15, color=(255, 255, 255, 100), batch=self.background_batch), Label(str(i), x=checkpoint[0], y=checkpoint[1], anchor_x="center", anchor_y="center", color=(255, 255, 255, 255), batch=self.background_batch)))
+        
     
     def simulate_generation(self, networks, simulation_round):
         self.hud = Hud(simulation_round, self.overlay_batch)
@@ -44,6 +51,7 @@ class Track(Window):
             if car_sprite.is_running:
                 if not self.track.is_road(car_sprite.body.x, car_sprite.body.y):
                     car_sprite.shut_off()
+                self.check_checkpoints(car_sprite, self.track.checkpoints)
 
         running_cars = [c for c in self.car_sprites if c.is_running]
         self.population_alive = len(running_cars)
@@ -61,3 +69,9 @@ class Track(Window):
         if symbol == key.ESCAPE:
             self.is_simulating = False
             print("Simulation aborted")
+
+    def check_checkpoints(self, car_sprite, checkpoints):
+        for i, checkpoint in enumerate(checkpoints):
+            length = math.sqrt((checkpoint[0] - car_sprite.body.x) ** 2 + (checkpoint[1] - car_sprite.body.y) ** 2)
+            if length < 40:
+                car_sprite.hit_checkpoint(i)

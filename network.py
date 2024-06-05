@@ -4,7 +4,7 @@ import math
 class Layer:
     def __init__(self, inputs_count, outputs_count):
         self.outputs = [0.0 for i in range(outputs_count)]
-        self.weights = [random.random() * 2 - 1 for i in range(inputs_count) for o in outputs_count]
+        self.weights = [[random.random() * 2 - 1 for i in range(inputs_count)] for o in range(outputs_count)]
 
     def feed_forward(self, inputs):
         for output_index, output in enumerate(self.outputs):
