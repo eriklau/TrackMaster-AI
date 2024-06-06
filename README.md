@@ -2,6 +2,8 @@
 
 This project simulates self-driving cars navigating a custom racetrack layout using genetic algorithms to optimize their neural networks. The cars are trained to drive on the track without going off-road by adjusting their control mechanisms based on sensor feedback.
 
+![trackmaster_ai](https://github.com/eriklau/TrackMaster-AI/assets/51893550/134152c0-6e78-4292-b57f-3a2405b385b1)
+
 ## Usage
 
 Requires Python 3.12+
