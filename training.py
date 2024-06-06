@@ -4,7 +4,8 @@ from network import Network
 from evolution import Evolution
 import os 
 
-car_image_paths = [os.path.join("images", f"car{i}.png") for i in range(3)]
+# car_image_paths = [os.path.join("images", f"car{i}.png") for i in range(3)]
+car_image_paths = [os.path.join("images", "car0.png")]
 track = Track(Racetrack(1), car_image_paths)
 
 network_dimensions = 5, 4, 2

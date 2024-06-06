@@ -3,13 +3,13 @@ from pyglet.shapes import Line
 import math
 
 class Radar:
-    max_length_pixels = 200
+    max_length_pixels = 50
     def __init__(self, angle, batch):
         self.angle = angle
-        self.beam = Line(0, 0, 0, 0, width=2, color=(255, 255, 255, 127), batch=batch)
+        self.beam = Line(0, 0, 0, 0, width=2, color=(0, 255, 0, 127), batch=batch)
 
 class Car:
-    max_speed = 6.0
+    max_speed = 2.5
     slipping_speed = max_speed * 0.75
 
     def __init__(self, network, track, image, batch) -> None:
@@ -21,7 +21,7 @@ class Car:
         self.body.x, self.body.y = track.checkpoints[0]
         self.radars = Radar(-70, batch), Radar(-35, batch), Radar(0, batch), Radar(35, batch), Radar(70, batch)
         self.speed = 0.0
-        self.rotation = 0.0
+        self.rotation = 180.0
         self.is_running = True
         self.last_checkpoint_passed = 0
 
