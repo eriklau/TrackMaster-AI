@@ -10,7 +10,7 @@ Requires Python 3.12+
 
 Clone the repo:
    ```bash
-   git clone https://github.com/yourusername/self-driving-car-simulation.git
+   git clone https://github.com/eriklau/TrackMaster-AI.git
   ```
 
 Install Pyglet:
