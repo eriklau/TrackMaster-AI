@@ -23,7 +23,7 @@ Run the program:
    python training.py
   ```
 ## How It Works
-# Neural Networks: Each car has a neural network initialized with random weights
-# Fitness: The performance of each car is evaluated based on how close it gets to the goal without going off-road
-# Genetic Algorithm: The best-performing cars are selected to reproduce, creating offspring with combined and mutated weights
-# Iteration: The process is repeated over multiple generations, gradually improving the cars' driving abilities
+Neural Networks: Each car has a neural network initialized with random weights \
+Fitness: The performance of each car is evaluated based on how close it gets to the goal without going off-road \
+Genetic Algorithm: The best-performing cars are selected to reproduce, creating offspring with combined and mutated weights \
+Iteration: The process is repeated over multiple generations, gradually improving the cars' driving abilities \
